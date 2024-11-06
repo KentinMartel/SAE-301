@@ -41,7 +41,7 @@ if (isset($_POST['submit'])) {
             echo '<div class="error">Erreur : ' . $user_id->get_error_message() . '</div>';
         }
     }
-}
+}   
 ?>
 
 <!-- Formulaire d'inscription -->
