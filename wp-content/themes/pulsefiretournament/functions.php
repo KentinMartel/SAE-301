@@ -137,13 +137,13 @@ function custom_menu_items($items, $args) {
         $items = preg_replace('/<li><a href=".*?\/inscription.*?">Inscription<\/a><\/li>/', '', $items);
 
         // Ajoute le lien de déconnexion avec une classe personnalisée pour le style
-        $items .= '<li class="menu-item logout-menu-item"><a href="' . wp_logout_url(home_url()) . '">Déconnexion</a></li>';
+        $items .= '<li class="menu-item logout-menu-item"><a href="' . wp_logout_url(home_url()) . '">DÉCONNEXION</a></li>';
     } else {
         // Ajoute le lien de connexion s'il n'est pas connecté
-        $items .= '<li class="menu-item"><a href="' . site_url('/connexion') . '">Connexion</a></li>';
+        $items .= '<li class="menu-item"><a href="' . site_url('/connexion') . '">CONNEXION</a></li>';
         
         // Ajoute le lien d'inscription s'il n'est pas connecté
-        $items .= '<li class="menu-item"><a href="' . site_url('/inscription') . '">Inscription</a></li>';
+        $items .= '<li class="menu-item"><a href="' . site_url('/inscription') . '">INSCRIPTION</a></li>';
     }
     
     return $items;

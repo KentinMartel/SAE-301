@@ -1,7 +1,7 @@
 <footer class="site-footer">
     <div class="footer-content">
         <p class="footer-text">
-            Kentin Martel 2024
+             ©2024 PulseFire
         </p>
     </div>
 </footer>

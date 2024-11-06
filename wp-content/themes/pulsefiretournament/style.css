@@ -1,1 +1,384 @@
-/* ssdz */
+@font-face {
+  font-family: "Industry";
+  src: url("<?php echo get_template_directory_uri(); ?>/fonts/Industry-Regular.woff2")
+      format("woff2"),
+    url("<?php echo get_template_directory_uri(); ?>/fonts/Industry-Regular.woff")
+      format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Menu burger visible uniquement sur mobile */
+.menu-burger {
+  display: none; /* Masqué par défaut */
+}
+
+@media (max-width: 768px) {
+  .menu-burger {
+    display: flex; /* Affiché uniquement sur les petits écrans */
+  }
+
+  .desktop-menu {
+    display: none; /* Cache le menu classique en mobile */
+  }
+}
+
+/* Menu classique visible uniquement sur desktop */
+.desktop-menu {
+  display: flex; /* Affiché par défaut */
+}
+
+@media (max-width: 768px) {
+  .desktop-menu {
+    display: none; /* Caché sur mobile */
+  }
+}
+
+/* Style de base pour mobile */
+body {
+  font-family: "Industry", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f2f2f2;
+}
+
+.create-team-section {
+  text-align: center;
+  margin: 20px;
+}
+
+.create-team-btn {
+  background-color: #ff7e00;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.create-team-btn:hover {
+  background-color: #e56f00;
+}
+
+.toutes-les-equipes ul {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.equipe-card {
+  width: 169px;
+  height: 169px;
+  background-color: #e0e0e0; /* Couleur de fond gris clair, à ajuster si besoin */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end; /* Place le texte en bas de la carte */
+  margin: 10px; /* Espace entre les cartes */
+  border: none; /* Enlève les bordures, ajustez si vous en voulez une */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Effet d'ombre pour donner de la profondeur, optionnel */
+}
+
+.equipe-logo {
+  max-width: 100px; /* Ajuste la taille maximum du logo */
+  max-height: 100px;
+  margin-bottom: 10px; /* Espace entre le logo et le titre */
+}
+
+.equipe-title a {
+  text-decoration: none; /* Enlève le soulignement */
+  color: #333333; /* Applique la couleur que tu souhaites */
+}
+
+.equipe-title a:hover {
+  text-decoration: none; /* Assure que le soulignement reste absent au survol */
+  color: #666666; /* Change la couleur au survol si souhaité */
+}
+
+.equipe-title {
+  font-size: 16px; /* Ajuste la taille de la police si nécessaire */
+  color: #333333;
+  text-align: center;
+  text-decoration: none; /* Enlève le soulignement */
+  margin: 0;
+  padding: 10px 0; /* Ajoute de l'espace entre le logo et le titre */
+  width: 100%; /* Assure que le texte occupe toute la largeur */
+}
+
+.create-team-submit {
+  width: 100%;
+  padding: 10px;
+  font-weight: bold;
+  border: none;
+  background-color: #ff7e00;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.create-team-submit:hover {
+  background-color: #e56f00;
+}
+
+/* Responsive pour tablettes et écrans moyens */
+@media (min-width: 600px) {
+  .equipe-card {
+    width: 45%;
+    max-width: 200px;
+  }
+
+  .create-team-btn,
+  .create-team-submit {
+    padding: 15px;
+    font-size: 1.1rem;
+  }
+}
+
+/* Responsive pour ordinateurs de bureau et grands écrans */
+@media (min-width: 1024px) {
+  .equipe-card {
+    width: 30%;
+    max-width: 250px;
+  }
+}
+
+/* Style général du tableau de classement */
+.classement-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.classement-table th,
+.classement-table td {
+  padding: 6px; /* Réduit encore plus l'espacement */
+  text-align: left;
+  font-size: 0.8rem; /* Réduit la taille de la police */
+}
+
+.classement-table th {
+  background-color: #0f63e2;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.classement-table td {
+  background-color: #fff;
+}
+
+/* Alignement de la colonne Points à droite */
+.classement-table th:nth-child(3),
+.classement-table td:nth-child(3) {
+  text-align: right;
+  width: 12%; /* Réduit la largeur de la colonne Points */
+  padding-right: 6px; /* Réduit l'espace sur la droite */
+}
+
+/* Style des rangs (carrés colorés) */
+.classement-table td:first-child {
+  width: 25px; /* Taille réduite pour le carré de rang */
+  height: 25px; /* Taille réduite du carré */
+  text-align: center;
+  color: #fff;
+  font-weight: bold;
+  line-height: 25px; /* Ajuste le texte pour qu'il soit centré dans le carré */
+}
+
+.classement-table tr:nth-child(-n + 4) td:first-child {
+  background-color: #f06315; /* Carré orange pour les 4 premiers */
+}
+
+.classement-table tr:nth-child(n + 5) td:first-child {
+  background-color: #c4c4c4; /* Carré gris pour le reste */
+}
+
+/* Style des cellules Équipe */
+.classement-table td:nth-child(2) {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Réduit l'espacement entre le logo et le nom */
+  width: 100%; /* Garde la largeur de la colonne Équipe */
+  padding: 0; /* Supprime l'espacement interne */
+  margin: 0; /* Supprime l'espacement entre les éléments */
+}
+
+/* Style du logo équipe */
+.equipe-logo {
+  width: 30px; /* Réduit la taille du logo */
+  height: auto;
+  background-color: #fff;
+  padding: 3px; /* Réduit l'espace autour du logo */
+}
+
+/* Rectangle avec logo et nom d'équipe */
+.classement-table td:nth-child(2) {
+  background-color: white;
+  display: flex;
+  align-items: center;
+  gap: 6px; /* Réduit l'espacement entre le logo et le nom */
+  padding: 6px 8px; /* Réduit l'espacement interne */
+  margin: 0; /* Enlève l'espace entre le logo et le nom */
+}
+
+/* Style du nom de l'équipe */
+.classement-table td:nth-child(2) p {
+  font-size: 0.8rem; /* Réduit la taille du texte */
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #333;
+  margin: 0; /* Supprime l'espacement supplémentaire */
+}
+
+/* Espacement entre chaque ligne */
+.classement-table tr {
+  margin-bottom: 5px; /* Réduit l'espacement entre les lignes */
+}
+
+/* Style des points */
+.classement-table td:nth-child(3) {
+  font-weight: bold;
+  color: #333;
+  padding-left: 6px; /* Réduit l'espace à gauche des points */
+}
+
+/* Style de la barre de navigation mobile */
+.site-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background-color: #fff; /* Couleur de fond de l'en-tête */
+}
+
+/* Menu burger */
+.menu-burger {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.menu-burger span {
+  width: 25px;
+  height: 3px;
+  background-color: #000;
+  margin: 3px 0;
+  transition: 0.3s;
+}
+
+/* Logo centré */
+.header-logo {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+.header-logo img {
+  width: 80px;
+  height: auto;
+  position: relative;
+  top: -3px;
+}
+
+.profile-icon {
+  position: relative;
+  top: 2px; /* Ajustez cette valeur pour contrôler le décalage vertical */
+}
+
+.profile-icon img {
+  width: 32px;
+  height: 32px;
+}
+
+/* Overlay mobile menu */
+.mobile-menu-overlay {
+  display: none; /* caché par défaut */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #fff; /* Fond blanc */
+  z-index: 10;
+  align-items: center; /* Centré verticalement */
+  justify-content: center;
+  padding: 20px;
+  transition: opacity 0.3s ease;
+}
+
+.mobile-menu-overlay.active {
+  display: flex; /* Affiche le menu quand actif */
+  opacity: 1;
+}
+
+.mobile-menu-items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: center; /* Centrer les éléments du menu */
+}
+
+/* Menu texte en gras */
+.mobile-menu-items li a {
+  color: #000;
+  text-decoration: none;
+  font-size: 18px;
+  padding: 15px;
+  display: block;
+  font-weight: bold;
+}
+
+/* Style de la croix de fermeture */
+.close-overlay {
+  position: absolute;
+  top: 55px;
+  left: 14px;
+  font-size: 30px; /* Assure-toi que la taille de la croix est assez grande */
+  color: #000; /* Mets une couleur de texte visible */
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 9999; /* S'assurer qu'il est au-dessus de tout le contenu */
+}
+
+/* Pour les écrans plus grands */
+@media (min-width: 768px) {
+  .site-header {
+    padding: 15px 30px;
+  }
+
+  .mobile-menu-overlay {
+    display: none;
+  }
+
+  /* Logo centré en haut */
+  .header-logo {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+  }
+}
+
+/* Conteneur du logo dans le menu */
+.logo-container {
+  text-align: center; /* Centrer le logo */
+  margin: 20px 0; /* Ajouter de l'espace autour du logo */
+}
+
+/* Style du logo pour le menu mobile */
+.logo-mobile {
+  max-width: 80%; /* Limiter la largeur du logo pour qu'il ne soit pas trop grand */
+  height: auto; /* Conserver les proportions du logo */
+}
