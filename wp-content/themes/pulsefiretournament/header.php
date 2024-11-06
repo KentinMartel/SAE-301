@@ -24,7 +24,7 @@
 
     <!-- Icône de profil à droite -->
     <div class="profile-icon">
-        <a href="<?php echo esc_url(home_url('/connexion')); ?>"> <!-- Changer ici vers /connexion -->
+        <a href="<?php echo esc_url(home_url('/profile')); ?>"> <!-- Changer ici vers /connexion -->
             <img src="<?php echo get_template_directory_uri(); ?>/images/profile-icon.png" alt="Profil">
         </a>
     </div>

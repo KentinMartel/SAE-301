@@ -28,6 +28,17 @@ body {
 }
 
 /* Grille des équipes */
+
+.equipe-link {
+  display: block;
+  text-decoration: none; /* Retirer le soulignement */
+  color: inherit; /* Garder la couleur par défaut */
+}
+
+.equipe-card:hover {
+  transform: scale(1.05); /* Effet de zoom au survol */
+}
+
 .equipes-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -37,7 +48,7 @@ body {
 
 .equipe-card {
   width: 180px; /* Ajustez si nécessaire */
-  height: 180px; /* Ajustez pour garder les logos grands et carrés */
+  height: 180px; /* Ajustez la hauteur pour donner plus d'espace */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -45,11 +56,12 @@ body {
   background-color: #f2f2f2; /* Couleur de fond */
   padding: 10px;
   box-sizing: border-box;
+  transition: transform 0.3s ease;
 }
 
 .equipe-logo {
   width: 60%; /* Prend toute la largeur de la carte */
-  height: auto; /* Maintient les proportions de l'image */
+  height: auto; /* Maintient les proportions de l’image */
   object-fit: contain; /* Pour éviter le recadrage de l’image */
   background: none; /* Retire tout fond potentiellement blanc */
 }
@@ -61,7 +73,14 @@ body {
   text-transform: uppercase;
   text-decoration: none; /* Supprime le surlignage */
   text-align: center;
-  margin-top: 10px;
+  margin-top: 15px;
+  flex-grow: 0; /* Empêche le titre de prendre plus d'espace */
+}
+
+/* Container pour assurer que les éléments sont alignés correctement */
+.equipe-card .equipe-logo,
+.equipe-card .equipe-title {
+  flex-grow: 0;
 }
 
 /* Bouton pour créer une équipe */
@@ -158,8 +177,6 @@ footer a:hover {
   width: 32px;
   height: 32px;
 }
-
-
 
 /* Pour les écrans plus grands */
 @media (min-width: 768px) {
@@ -394,7 +411,7 @@ footer a:hover {
   font-weight: bold;
   margin-bottom: 10px;
   margin-top: 0px;
-  padding-top: 10px;
+  padding-top: 80px;
 }
 
 .bienvenue-texte {
@@ -828,300 +845,480 @@ body.menu-open {
 
 /* Formulaire de contact */
 .contact-form-container {
-    background-color: #f7f7f7;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    margin-top: 30px;
-    max-width: 800px;
-    margin: 0 auto;
+  background-color: #f7f7f7;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-top: 30px;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .contact-form-container h1 {
-    font-size: 26px;
-    color: #333;
-    margin-bottom: 20px;
-    text-align: center;
+  font-size: 26px;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
 }
 
 .contact-form-container p {
-    font-size: 16px;
-    color: #666;
-    margin-bottom: 30px;
-    text-align: center;
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 30px;
+  text-align: center;
 }
 
 .contact-form .form-group {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .contact-form label {
-    font-weight: bold;
-    display: block;
-    margin-bottom: 8px;
-    color: #333;
-    font-size: 16px;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 8px;
+  color: #333;
+  font-size: 16px;
 }
 
 .contact-form input,
 .contact-form textarea {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 14px;
-    color: #333;
-    background-color: #f1f1f1;
-    transition: border-color 0.3s ease;
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  color: #333;
+  background-color: #f1f1f1;
+  transition: border-color 0.3s ease;
 }
 
 .contact-form input:focus,
 .contact-form textarea:focus {
-    border-color: #ff6600;
-    outline: none;
+  border-color: #ff6600;
+  outline: none;
 }
 
 .contact-form textarea {
-    resize: vertical;
-    min-height: 150px;
+  resize: vertical;
+  min-height: 150px;
 }
 
 .submit-btn {
-    background-color: #ff6600;
-    color: #fff;
-    padding: 12px 25px;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    text-transform: uppercase;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
-    display: block;
-    width: 100%;
-    margin-top: 20px;
+  background-color: #ff6600;
+  color: #fff;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  display: block;
+  width: 100%;
+  margin-top: 20px;
 }
 
 .submit-btn:hover {
-    background-color: #e65c00;
+  background-color: #e65c00;
 }
 
 .submit-btn:active {
-    background-color: #cc5200;
+  background-color: #cc5200;
 }
 
 /* Container général du formulaire */
 .registration-container {
-    background-color: #f7f7f7;
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    margin-top: 30px;
-    max-width: 600px;
-    margin: 0 auto;
-    text-align: center;
+  background-color: #f7f7f7;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-top: 30px;
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
 }
 
 .registration-title {
-    font-size: 28px;
-    color: #333;
-    margin-bottom: 20px;
+  font-size: 28px;
+  color: #333;
+  margin-bottom: 20px;
 }
 
 .registration-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
 .form-group {
-    text-align: left;
+  text-align: left;
 }
 
 .form-group label {
-    font-weight: bold;
-    color: #333;
-    font-size: 16px;
-    margin-bottom: 8px;
+  font-weight: bold;
+  color: #333;
+  font-size: 16px;
+  margin-bottom: 8px;
 }
 
 .form-input {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 14px;
-    color: #333;
-    background-color: #f1f1f1;
-    transition: border-color 0.3s ease;
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  color: #333;
+  background-color: #f1f1f1;
+  transition: border-color 0.3s ease;
 }
 
 .form-input:focus {
-    border-color: #ff6600;
-    outline: none;
+  border-color: #ff6600;
+  outline: none;
 }
 
 /* Style du bouton d'inscription */
 .form-submit {
-    background-color: #ff6600;
-    color: #fff;
-    padding: 15px 30px;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    text-transform: uppercase;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
-    width: 100%;
-    margin-top: 20px;
+  background-color: #ff6600;
+  color: #fff;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  width: 100%;
+  margin-top: 20px;
 }
 
 .form-submit:hover {
-    background-color: #e65c00;
+  background-color: #e65c00;
 }
 
 .form-submit:active {
-    background-color: #cc5200;
+  background-color: #cc5200;
 }
 
 /* Message d'erreur ou de succès */
-.error, .success {
-    margin-top: 20px;
-    padding: 10px;
-    border-radius: 5px;
-    color: #fff;
-    font-weight: bold;
+.error,
+.success {
+  margin-top: 20px;
+  padding: 10px;
+  border-radius: 5px;
+  color: #fff;
+  font-weight: bold;
 }
 
 .error {
-    background-color: #e74c3c;
+  background-color: #e74c3c;
 }
 
 .success {
-    background-color: #2ecc71;
+  background-color: #2ecc71;
 }
 
 /* Pour les petits écrans - mobile */
 @media screen and (max-width: 768px) {
-    .registration-container {
-        padding: 20px;
-        width: 90%;
-    }
+  .registration-container {
+    padding: 20px;
+    width: 90%;
+  }
 
-    .registration-title {
-        font-size: 24px;
-    }
+  .registration-title {
+    font-size: 24px;
+  }
 
-    .form-input {
-        padding: 10px;
-        font-size: 14px;
-    }
+  .form-input {
+    padding: 10px;
+    font-size: 14px;
+  }
 
-    .form-submit {
-        padding: 12px 20px;
-    }
+  .form-submit {
+    padding: 12px 20px;
+  }
 }
 
 /* Container général du formulaire de connexion */
 form {
-    background-color: #f7f7f7;
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    margin-top: 30px;
-    max-width: 600px;
-    margin: 0 auto;
-    text-align: center;
+  background-color: #f7f7f7;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-top: 30px;
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
 }
 
 /* Titre du formulaire de connexion */
 form h2 {
-    font-size: 28px;
-    color: #333;
-    margin-bottom: 20px;
+  font-size: 28px;
+  color: #333;
+  margin-bottom: 20px;
 }
 
 /* Champs du formulaire */
 form label {
-    font-weight: bold;
-    color: #333;
-    font-size: 16px;
-    margin-bottom: 8px;
-    text-align: left;
-    display: block;
+  font-weight: bold;
+  color: #333;
+  font-size: 16px;
+  margin-bottom: 8px;
+  text-align: left;
+  display: block;
 }
 
 form input[type="text"],
 form input[type="password"] {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 14px;
-    color: #333;
-    background-color: #f1f1f1;
-    transition: border-color 0.3s ease;
-    margin-bottom: 15px;
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  color: #333;
+  background-color: #f1f1f1;
+  transition: border-color 0.3s ease;
+  margin-bottom: 15px;
 }
 
 form input[type="text"]:focus,
 form input[type="password"]:focus {
-    border-color: #ff6600;
-    outline: none;
+  border-color: #ff6600;
+  outline: none;
 }
 
 /* Bouton de connexion */
 form input[type="submit"] {
-    background-color: #ff6600;
-    color: #fff;
-    padding: 15px 30px;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    text-transform: uppercase;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
-    width: 100%;
+  background-color: #ff6600;
+  color: #fff;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  width: 100%;
 }
 
 form input[type="submit"]:hover {
-    background-color: #e65c00;
+  background-color: #e65c00;
 }
 
 form input[type="submit"]:active {
-    background-color: #cc5200;
+  background-color: #cc5200;
 }
 
 /* Message d'erreur */
 .error {
-    margin-top: 20px;
-    padding: 10px;
-    border-radius: 5px;
-    color: #fff;
-    font-weight: bold;
-    background-color: #e74c3c;
+  margin-top: 20px;
+  padding: 10px;
+  border-radius: 5px;
+  color: #fff;
+  font-weight: bold;
+  background-color: #e74c3c;
 }
 
 /* Pour les petits écrans - mobile */
 @media screen and (max-width: 768px) {
-    form {
-        padding: 20px;
-        width: 90%;
-    }
+  form {
+    padding: 20px;
+    width: 90%;
+  }
 
-    form h2 {
-        font-size: 24px;
-    }
+  form h2 {
+    font-size: 24px;
+  }
 
-    form input[type="text"],
-    form input[type="password"] {
-        padding: 10px;
-        font-size: 14px;
-    }
+  form input[type="text"],
+  form input[type="password"] {
+    padding: 10px;
+    font-size: 14px;
+  }
 
-    form input[type="submit"] {
-        padding: 12px 20px;
-    }
+  form input[type="submit"] {
+    padding: 12px 20px;
+  }
 }
+
+/* Conteneur de l'équipe */
+.equipe-container {
+  padding: 20px;
+}
+
+.equipe-container h1 {
+  font-size: 14px;
+  color: #333;
+}
+
+.equipe-container h2 {
+  font-size: 20px;
+  color: #333;
+  margin-top: 20px;
+}
+
+/* Cartes des joueurs */
+.joueurs-cards {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.joueur-card {
+  background-color: #f06315; /* Orange */
+  width: 120px; /* Ajuste la largeur de la carte */
+  height: 120px; /* Ajuste la hauteur de la carte */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+}
+
+.joueur-card p {
+  color: white; /* Texte en blanc */
+  font-size: 14px; /* Taille de la police réduite */
+  font-weight: bold; /* Texte en gras */
+  text-transform: uppercase; /* Texte en majuscules */
+  text-align: center; /* Centrer le texte */
+  margin: 0;
+}
+
+/* Style pour la liste des matchs */
+.match-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.match-item {
+  margin-bottom: 20px;
+}
+
+.match-item a {
+  text-decoration: none;
+  color: #333;
+}
+
+.match-item h3 {
+  font-size: 18px;
+  font-weight: bold;
+  color: #000;
+}
+
+.match-item p {
+  margin: 5px 0;
+}
+
+.match-item a:hover {
+  color: #f06315; /* Couleur de survol */
+}
+
+/* Style du bouton retour avec flèche */
+.back-button {
+  display: inline-block;
+  background-color: #f06315; /* Orange */
+  color: white;
+  padding: 10px 20px;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-bottom: 20px; /* Un peu d'espace sous la flèche */
+  margin-top: 20px;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.back-button::before {
+  content: "←";
+  margin-right: 10px; /* Espace entre la flèche et le texte */
+}
+
+/* Style global pour le match */
+.match-container {
+  padding: 20px;
+  background-color: #f2f2f2;
+}
+
+/* Style pour la carte du score */
+.score-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.score-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.score {
+  font-size: 50px;
+  font-weight: bold;
+  margin: 0 20px;
+}
+
+/* Style pour les informations des équipes */
+.team-info {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 30px;
+}
+
+.team {
+  text-align: center;
+  padding: 10px;
+}
+
+.team-logo {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+/* Mise en évidence de l'équipe gagnante */
+.team.winner {
+  background-color: orange;
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+/* Style pour les détails du match */
+.match-details {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.team-members {
+  margin-bottom: 30px;
+}
+
+.team-member-group {
+  display: flex;
+  justify-content: space-between;
+}
+
+.membres-list {
+  list-style: none;
+  padding: 0;
+}
+
+.membres-list li {
+  font-size: 14px;
+  color: #333;
+}
+
+/* Style pour le statut du match */
+.match-status {
+  text-align: center;
+  font-weight: bold;
+  font-size: 18px;
+}
+
